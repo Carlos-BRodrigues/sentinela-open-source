@@ -1,0 +1,26 @@
+{
+	"database": {
+		"drivername": "mysql+pymysql",
+		"username": "",
+		"password": "%gz#P",
+		"host": "",
+		"port": "",
+		"database": "dire-test"
+	},
+	"sentinels": {
+		"direwolf": {
+			"name": "sentinela1",
+			"phone": "+999999999999",
+			"id": "",
+			"hash": ""
+		}
+	},
+	"garbage": {
+		"lucaslago": {
+			"name": "sentinela2",
+			"phone": "+9999999999",
+			"id": "",
+			"hash": ""
+		}
+	}
+}
