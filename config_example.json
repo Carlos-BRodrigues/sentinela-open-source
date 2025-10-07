@@ -1,4 +1,4 @@
-{
+c{
 	"database": {
 		"drivername": "mysql+pymysql",
 		"username": "",
@@ -16,7 +16,7 @@
 		}
 	},
 	"garbage": {
-		"lucaslago": {
+		"redacted": {
 			"name": "sentinela2",
 			"phone": "+9999999999",
 			"id": "",
