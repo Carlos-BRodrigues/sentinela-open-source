@@ -1,6 +1,7 @@
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects.mysql import LONGTEXT
+from sqlalchemy import BigInteger
 
 Base = declarative_base()
 
@@ -93,7 +94,7 @@ class Comment(Base):
 
     id = Column(Integer, primary_key=True)
     comment_id = Column(Integer, index=True)
-    discussion_group_id = Column(Integer)
+    discussion_group_id = Column(BigInteger)
     comment_text = Column(LONGTEXT)
     author_id = Column(Integer)
     date = Column(DateTime)
@@ -104,7 +105,7 @@ class Comment(Base):
 
     reply_to_comment_id = Column(Integer)
 
-    UniqueConstraint('discussion_group_id', 'comment_id', name='unique_comment')
-
+    UniqueConstraint('parent_post_message_id', 'comment_id', name='unique_comment')
+    
     def __repr__(self):
         return f'Comment {self.comment_id}'
