@@ -20,6 +20,8 @@ async def main():
     with open("config.json") as jsonfile:
         sentinels = json.load(jsonfile)['sentinels']
 
+    date = datetime.now().strftime('%Y-%m-%d')
+
     for key in sentinels: 
         try:
             async with TelegramClient(sentinels[key]['name'], sentinels[key]['id'], sentinels[key]['hash']) as client:
@@ -28,11 +30,11 @@ async def main():
                 async for dialog in client.iter_dialogs():
                     
                     try:
-                        with open("progress_log.txt", "a", encoding="utf-8") as f:
+                        with open(f"progress_log_{date}.txt", "a", encoding="utf-8") as f:
                             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                             f.write(f"[{timestamp}] Checking chat: {dialog.name} (ID: {dialog.id})\n")
                     except Exception as log_e:
-                        logging.critical(f"CRITICAL WARNING: Could not write to progress_log.txt for chat {dialog.name}. Error: {log_e}")
+                        print(f"CRITICAL WARNING: Could not write to progress_log_{date}.txt for chat {dialog.name}. Error: {log_e}")
 
                     if (type(dialog.entity).__name__ == 'User'):
                         continue
