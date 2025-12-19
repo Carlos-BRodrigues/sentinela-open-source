@@ -84,7 +84,7 @@ class Reaction(Base):
     reaction = Column(Text)
     count = Column(Integer)
 
-    UniqueConstraint('message_id', 'reaction', name='unique_reaction_for_message')
+    UniqueConstraint('message_id','comment_id', 'reaction', name='unique_reaction_for_message')
 
     def __repr__(self):
         return f'Reaction {self.reaction} ({self.count})'
@@ -104,6 +104,8 @@ class Comment(Base):
     parent_post_entity_id = Column(Integer, ForeignKey("telegram_entities.id"), nullable=False)
 
     reply_to_comment_id = Column(Integer)
+
+    comment_level = Column(Integer)
 
     UniqueConstraint('parent_post_message_id', 'comment_id', name='unique_comment')
     
